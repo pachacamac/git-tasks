@@ -3,6 +3,9 @@
 Have a SCRUM/KANBAN like task board, based on plain text files, directly in your git repository.
 
 
+![screenshot](https://github.com/pachacamac/git-tasks/blob/master/screenshot.png?raw=true)
+
+
 # Installation / usage
 
 1) clone repo
