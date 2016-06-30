@@ -1,6 +1,6 @@
 priority: 1
 points: 1
-assignee:
+assignee: 
 type: bug
 
 And here we have a bug!
