@@ -1,0 +1,46 @@
+!!!
+%html
+  %head
+    %meta{charset: "UTF-8"}/
+    %title GitTasks
+    %link{href: '/jquery-ui.css', rel: 'stylesheet'}
+    %link{href: '/board.css', rel: 'stylesheet prefetch'}
+  %body
+    %header
+      .wrapper
+        %h2= defined?(repo) && !repo.empty? ? repo : 'GitTasks'
+        %nav{role: "navigation"}
+          %h1 ((GitTasks))
+          -# %ul
+            -# %li.active
+            -#   %a.active{href: "#"} Home
+            -# %li
+            -#   %a{:href => "#"} Something
+        %ul.utilities
+          -# %li
+          -#   %a{:href => "#"} link
+          %li
+            %form
+              %input.search-input.filter{placeholder: 'Filter', type: 'text'}
+
+    = haml :task_modal, {layout: false}, {task: GitTasks::Task.new('', '', {priority: 1, points: 1, type: 'task'})}
+    #board-wrapper
+      #board
+        - if lanes.any?
+          - lanes.each do |path, lane|
+            = haml :lane, {layout: false}, {lane: lane, path: path}
+        - else
+          .centered{style: 'width: 50%; white-space: normal;'}
+            %h2
+              %strong Seems like your repository does not have a proper tasks folder yet!
+            Try creating a folder called "tasks" in your repository.
+            Inside create several folders named after your task board columns.
+            (E.g. "10-todo", "20-in_progress", "30-done")
+            Note that the number prefixes are just used for sorting.
+            Make sure to create a ".gitkeep" file inside each folder since Git does not push empty folders.
+            Then commit and push your folders and reload this site.
+
+    %script{src: '/jquery.min.js'}
+    %script{src: '/jquery-ui.min.js'}
+    %script{src: '/jquery.ui.touch-punch.min.js'}
+    %script{src: '/board.js'}

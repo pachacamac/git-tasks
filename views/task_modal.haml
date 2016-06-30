@@ -1,0 +1,32 @@
+#task-modal.modal{"aria-hidden" => "true"}
+  .modal-dialog
+    .modal-header
+      %h2.header
+      %a.btn-close{"aria-hidden" => "true", href: "#"} ×
+    .modal-body
+      %p
+        %label Name
+        %input.task-name{type: 'text', value: task.name, placeholder: 'Name'}
+      %div{style: 'clear: both;'}
+        %p{style: 'width: 46%; float: left;'}
+          %label Type
+          %select.task-type
+            - %w{task bug user-story technical planning design evaluation}.each do |type|
+              %option{value: type, required: true, selected: type==task.headers[:type]}= type
+        %p{style: 'width: 46%; float: right;'}
+          %label Assignee
+          %input.task-assignee{type: 'text', value: task.headers[:assignee], placeholder: 'Assignee'}
+      %div{style: 'clear: both;'}
+        %p{style: 'width: 46%; float: left;'}
+          %label Priority
+          %input.task-priority{type: 'number', min: '1', max: '5', value: task.headers[:priority], placeholder: 'Priority'}
+        %p{style: 'width: 46%; float: right;'}
+          %label Points
+          %input.task-points{type: 'number', min: '1', max: '10', value: task.headers[:points], placeholder: 'Points'}
+      %p
+        %label Description
+        %textarea.task-description{rows: '5', placeholder: 'Description'}= task.body
+
+    .modal-footer
+      %span.error
+      %a.btn.submit{href: "#"} OK

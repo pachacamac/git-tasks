@@ -1,0 +1,14 @@
+%li.card{class: "#{task.headers[:type]}", "data-task-path" => "#{task.filename}"}
+  %div{title: task.headers[:type]}
+    %p.task-head
+      %a.task-edit{title: 'edit task' , href: '#'}
+        %span.name= "#{task.id}-#{task.name}"
+      %a.bubble.task-delete{title: 'delete task', href: "#"} ×
+      - if task.headers[:points]
+        %span.bubble.points{title: 'Points', "data-points" => task.headers[:points]}= task.headers[:points]
+      - if task.headers[:priority]
+        %span.bubble.priority{title: 'Priority', "data-priority" => task.headers[:priority]}= task.headers[:priority]
+
+    %span.type= task.headers[:type]
+    %pre.body= task.body.gsub(/<(.*?)>/){"&lt;#{$1}&gt;"}
+    %span.assignee{title: 'Assignee'}= task.headers[:assignee]

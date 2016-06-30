@@ -1,0 +1,13 @@
+.lane
+  %h2= lane[:name]
+  .details
+    %p
+      %span.nb-item-value
+      %span.label items,
+      %span.nb-pts-value
+      %span.label points
+      %a.task-new{href: '#task-modal', 'data-lane' => "#{path}"} +
+  .list
+    %ul.connectedSortable{"data-lane-path" => "#{path}"}
+      - lane[:tasks].each do |task|
+        = haml :task, {layout: false}, {task: task}

@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{charset: 'UTF-8'}
+    %title GitTasks
+    %link{href: '/board.css', rel: 'stylesheet prefetch'}
+  %body
+    .landing
+      %h1 GitTasks
+      %input{type: 'text', placeholder: 'enter git repo here', id: 'git-repo', onkeydown: "javascript: if(event.keyCode == 13) "}
+      %input.btn{type: 'button', value: 'go', id: 'go-btn'}
+      %p The machine running this site needs to have access to the git repository you are trying to access (i.e. pub-key is copied).
+  :javascript
+    var inp = document.getElementById('git-repo'),
+        btn = document.getElementById('go-btn'),
+        gof = function(){ window.location = window.location + "repo/" + inp.value };
+    btn.addEventListener('click', gof, false);
+    inp.addEventListener('keydown', function(e){ if(e.keyCode==13) gof();}, false);
+
