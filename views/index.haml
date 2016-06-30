@@ -7,7 +7,7 @@
   %body
     .landing
       %h1 GitTasks
-      %input{type: 'text', placeholder: 'enter git repo here', id: 'git-repo', onkeydown: "javascript: if(event.keyCode == 13) "}
+      %input{type: 'text', placeholder: 'enter git ssh link here (e.g. git@github.com:user/repo.git)', id: 'git-repo', onkeydown: "javascript: if(event.keyCode == 13) "}
       %input.btn{type: 'button', value: 'go', id: 'go-btn'}
       %p The machine running this site needs to have access to the git repository you are trying to access (i.e. pub-key is copied).
   :javascript
