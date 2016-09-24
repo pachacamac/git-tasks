@@ -4,6 +4,7 @@ require 'haml'
 require 'fileutils'
 require 'digest/md5'
 
+
 module GitTasks
   BASE_PATH = '/tmp/git-tasks'
   GIT_TASKS_DIR = 'tasks'
@@ -70,9 +71,13 @@ module GitTasks
     set :root, File.dirname(__FILE__)
     set :public_folder, 'public'
 
+    use Rack::Auth::Basic, 'Restricted Area' do |username, password|
+      username == 'git' && password == 't@sks'
+    end
+
     def initialize(opts={})
       super()
-      #@userfile = opts[:userfile] || "#{File.absolute_path(File.dirname(__FILE__))}/user.yml"
+      # @userfile = opts[:userfile] || "#{File.absolute_path(File.dirname(__FILE__))}/user.yml"
     end
 
     def in_repo(repo, &block)
