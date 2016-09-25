@@ -27,18 +27,11 @@ Oh and the repo should have a folder called `tasks`. In there should be a few fo
 * Be sure to have the [ruby-devel] headers installed:  
 Red Hat, Fedora:  
 ```
-  yum -y install gcc mysql-devel ruby-devel rubygems
-  gem install -y mysql -- --with-mysql-config=/usr/bin/mysql_config
+  yum -y install gcc ruby-devel rubygems
 ```
 Debian, Ubuntu:  
 ```
-  apt-get install libmysqlclient-dev ruby-dev
-  gem install mysql
-```
-Arch Linux:  
-```
-  pacman -S libmariadbclient
-  gem install mysql
+  apt-get install ruby-dev
 ```
 * This is older code that I haven't touched in a while and therefore needs cleanup!
 * There are definitely bugs in there. Use at own risk.
