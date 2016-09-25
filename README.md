@@ -24,7 +24,15 @@ Oh and the repo should have a folder called `tasks`. In there should be a few fo
 
 
 # Warning
-
+* Be sure to have the [ruby-devel] headers installed:  
+Red Hat, Fedora:  
+```
+  yum -y install gcc ruby-devel rubygems
+```
+Debian, Ubuntu:  
+```
+  apt-get install ruby-dev
+```
 * This is older code that I haven't touched in a while and therefore needs cleanup!
 * There are definitely bugs in there. Use at own risk.
 * Feel free to open issues
